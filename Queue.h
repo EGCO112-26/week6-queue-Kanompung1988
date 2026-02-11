@@ -30,7 +30,6 @@ int dequeue_struct(Queue *q){
    int value= t->data;
    q->headPtr = t->nextPtr;
    
-   // If queue becomes empty, update tail
    if(q->headPtr == NULL) {
        q->tailPtr = NULL;
    }
@@ -39,7 +38,7 @@ int dequeue_struct(Queue *q){
    free(t);
    return value;
    }
-   // Queue is empty - return -1 without printing
+   printf("Empty queue\n");
    return -1;
 }
 
