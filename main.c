@@ -23,7 +23,7 @@ int main(int argc , char **argv) {
             printf("dequeing %d\n",x);
         }
         else {
-       enqueue_struct(&headPtr,&tailPtr, atoi(argv[i]));
+       enqueue(&headPtr,&tailPtr, atoi(argv[i]));
            
         }
  }

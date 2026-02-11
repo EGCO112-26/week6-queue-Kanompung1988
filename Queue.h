@@ -9,7 +9,19 @@ typedef struct {
 void enqueue_struct(Queue* q, int x){
   Node *new_node=(Node*) malloc(sizeof(Node));
 if(new_node){ 
-  /*Finish enqueue */
+  new_node->data = x;
+  new_node->nextPtr = NULL;
+  
+  if(q->tailPtr == NULL) {
+      // Queue is empty
+      q->headPtr = new_node;
+      q->tailPtr = new_node;
+  } else {
+      // Add to the end of queue
+      q->tailPtr->nextPtr = new_node;
+      q->tailPtr = new_node;
+  }
+  q->size++;
  }
 }
 
@@ -18,7 +30,15 @@ int dequeue_struct(Queue *q){
    NodePtr t=q->headPtr;
    if(t){
    int value= t->data;
-       /*Finish dequeue */
+   q->headPtr = t->nextPtr;
+   
+   // If queue becomes empty, update tail
+   if(q->headPtr == NULL) {
+       q->tailPtr = NULL;
+   }
+   
+   q->size--;
+   free(t);
    return value;
    }
    printf("Empty queue");
