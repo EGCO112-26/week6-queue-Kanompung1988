@@ -50,8 +50,8 @@ int dequeue(NodePtr* head, NodePtr* tail){
    free(t);
    return value;
    }
-   printf("Empty queue");
-   return 0;
+   printf("Error: Queue is empty\n");
+   return -1; // Return -1 to indicate an error
 }
 
 
